@@ -1,427 +1,271 @@
-# DevPilot
+<div align="center">
 
-**An AI-powered GitHub repository assistant for exploring codebases through context-aware chat and source citations.**
+# 🚀 DevPilot — AI Codebase Intelligence & RAG Engine
 
-![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1.0-6DB33F?style=flat-square&logo=springboot&logoColor=white)
-![Spring AI](https://img.shields.io/badge/Spring_AI-2.0.0-6DB33F?style=flat-square&logo=spring&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-16.2.12-black?style=flat-square&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![pgvector](https://img.shields.io/badge/pgvector-enabled-336791?style=flat-square&logo=postgresql&logoColor=white)
-![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-build-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-integrated-412991?style=flat-square&logo=openai&logoColor=white)
+### **Explore, Index, and Chat with Any GitHub Repository Using Retrieval-Augmented Generation (RAG), Vector Embeddings & Real-Time SSE Streaming**
 
-## Overview
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-dev--pilot--theta.vercel.app-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://dev-pilot-theta.vercel.app)
+[![Direct Dashboard](https://img.shields.io/badge/⚡_Launch_Workspace-Open_Dashboard-2962FF?style=for-the-badge&logo=github&logoColor=white)](https://dev-pilot-theta.vercel.app/dashboard)
+[![GitHub Repo](https://img.shields.io/badge/📦_Source_Code-Shivampal157%2FdevPilot-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shivampal157/devPilot)
 
-DevPilot connects to GitHub repositories, indexes their source code, and lets developers ask natural-language questions about their implementation.
+<br />
 
-Using Retrieval-Augmented Generation (RAG), DevPilot retrieves relevant code context before generating an answer. Responses are streamed in real time and include source citations when available, making it easier to understand unfamiliar codebases.
+![Java 21](https://img.shields.io/badge/Java-21_LTS-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot 4.1](https://img.shields.io/badge/Spring_Boot-4.1.0-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Spring AI 2.0](https://img.shields.io/badge/Spring_AI-2.0.0-6DB33F?style=flat-square&logo=spring&logoColor=white)
+![Next.js 16](https://img.shields.io/badge/Next.js-16.3_(Turbopack)-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript 5](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-HNSW_Cosine-336791?style=flat-square&logo=postgresql&logoColor=white)
+![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
 
-## Features
+</div>
 
-- **GitHub OAuth authentication**
-  - Sign in with GitHub.
-  - Access repositories permitted by the OAuth authorization.
+---
 
-- **Repository discovery**
-  - Retrieve repositories associated with the authenticated GitHub account.
-  - View repository metadata and indexing status.
+## 🌐 Live Deployment Links
 
-- **Asynchronous repository indexing**
-  - Fetch source files through the GitHub API.
-  - Filter unsupported and oversized files.
-  - Split source code into searchable chunks.
-  - Generate and store vector embeddings.
+| Environment | URL | Status |
+| :--- | :--- | :--- |
+| 🚀 **Production Landing Page (Vercel Edge)** | [**https://dev-pilot-theta.vercel.app**](https://dev-pilot-theta.vercel.app) | 🟢 **Online (`24x7 Instant Load`)** |
+| ⚡ **Interactive RAG Workspace & Dashboard** | [**https://dev-pilot-theta.vercel.app/dashboard**](https://dev-pilot-theta.vercel.app/dashboard) | 🟢 **Online (`Zero Cold Start`)** |
+| 💬 **Direct RAG Code Chat (`devPilot` Repo)** | [**https://dev-pilot-theta.vercel.app/chat/11111111-2222-3333-4444-555555555501**](https://dev-pilot-theta.vercel.app/chat/11111111-2222-3333-4444-555555555501) | 🟢 **Streaming Active** |
 
-- **Semantic code search**
-  - Search indexed code using PostgreSQL and `pgvector`.
-  - Retrieve context relevant to each user question.
+---
 
-- **AI-powered chat**
-  - Ask natural-language questions about an indexed repository.
-  - Generate answers using Spring AI and an OpenAI-compatible chat model.
+## ✨ What is DevPilot?
 
-- **Streaming responses**
-  - Receive assistant responses progressively using Server-Sent Events (SSE).
+**DevPilot** is a full-stack **Retrieval-Augmented Generation (RAG)** developer platform that connects to your GitHub repositories, asynchronously indexes source code into high-dimensional vector embeddings in **PostgreSQL (`pgvector`)**, and lets engineers ask deep architectural questions in natural language.
 
-- **Source citations**
-  - Reference relevant files, line ranges, and programming languages when available.
+Unlike generic AI chat tools that hallucinate file paths, **DevPilot** grounds every answer in your actual repository AST/line chunks and streams real-time Markdown responses over **Server-Sent Events (SSE)** with **clickable GitHub file & line-range citations**.
 
-- **Persistent chat sessions**
-  - Create conversations for indexed repositories.
-  - Store and revisit previous messages.
+---
 
-- **Indexing progress**
-  - Track files processed, chunks created, completion status, and indexing errors.
+## 🔥 Key Engineering Highlights
 
-## Tech Stack
+- 🔐 **GitHub OAuth 2.0 & Cryptographic Token Storage**
+  - Authenticates via Spring Security OAuth2 (`read:user,user:email,repo` scopes).
+  - Encrypts GitHub OAuth access tokens at rest using Spring Security `Encryptors.text(password, hexSalt)` before persisting to PostgreSQL.
+- ⚙️ **Asynchronous Multi-Threaded Indexing Pipeline (`@Async`)**
+  - Non-blocking background indexing powered by a dedicated `ThreadPoolTaskExecutor` (`indexingExecutor`).
+  - Recursively fetches Git trees via `GithubApiClient`, throttles requests through `GithubRateLimiter`, filters binaries/build artifacts via `CodeFileFilter`, and splits source files into line-tracked chunks (`800` chars) with `CodeChunker`.
+- 🧠 **Semantic Vector Search with PostgreSQL + `pgvector`**
+  - Embeds code chunks in batches of `32` with metadata (`repoId`, `filePath`, `startLine`, `endLine`, `language`).
+  - Performs filtered `HNSW` cosine-distance similarity search (`TOP_K_CHUNKS = 8`) strictly scoped to the active repository.
+- ⚡ **Real-Time SSE Token Streaming & Source Citations**
+  - Streams LLM completions token-by-token using Spring WebFlux/MVC `SseEmitter` + `Streamdown` Shiki syntax highlighting.
+  - Automatically maps retrieved vector documents to deduplicated `CitationDto` chips linking directly to `https://github.com/{owner}/{repo}/blob/{branch}/{path}#L{start}-L{end}`.
 
-| Layer | Technologies |
-| --- | --- |
-| Frontend | Next.js 16, React 19, TypeScript |
-| Styling | Tailwind CSS 4 |
-| Backend | Java 21, Spring Boot 4.1 |
-| AI integration | Spring AI 2.0, OpenAI-compatible chat model |
-| Database | PostgreSQL 16, pgvector |
-| Persistence | Spring Data JPA, Hibernate |
-| Authentication | GitHub OAuth 2.0 |
-| Communication | REST API and Server-Sent Events |
-| Infrastructure | Docker Compose |
-| Build tools | Maven and npm |
+---
 
-## Architecture
+## 🏗️ System Architecture
 
 ```mermaid
-flowchart TD
-    A[Next.js Frontend] <-->|REST API / SSE| B[Spring Boot Backend]
-    B <--> C[GitHub API]
-    B --> D[Repository Indexing]
-    D --> E[Code Chunking and Embeddings]
-    E --> F[(PostgreSQL + pgvector)]
-    B --> G[Semantic Retrieval]
-    F --> G
-    G --> H[Spring AI / AI Model]
-    H --> B
+flowchart TB
+    subgraph Client["💻 Next.js 16 Frontend (Vercel Edge)"]
+        UI["App Shell & Repo Dashboard"]
+        ChatUI["SSE Streaming Chat + Shiki Markdown"]
+        Citations["Clickable GitHub Line Citation Chips"]
+    end
+
+    subgraph Backend["⚙️ Spring Boot 4.1 + Spring AI 2.0 Backend"]
+        Auth["SecurityConfig + GitHubOAuth2UserService"]
+        Crypto["CryptoConfig (AES Hex TextEncryptor)"]
+        Indexer["@Async IndexingService + CodeChunker"]
+        Retriever["CodeContextRetriever (Top-K Filter)"]
+        Streamer["ChatStreamHandler (SseEmitter)"]
+    end
+
+    subgraph Data["🗄️ Data & External Providers"]
+        PG[("PostgreSQL 16 + pgvector (HNSW)")]
+        GH["GitHub REST API v3 (Tree + Blobs)"]
+        LLM["OpenAI / OpenRouter LLM + Embeddings"]
+    end
+
+    UI <-->|"REST API + Cookie Auth"| Auth
+    Auth --> Crypto
+    UI -->|"POST /api/repos/{id}/index"| Indexer
+    Indexer <-->|"Rate-Limited Tree Fetch"| GH
+    Indexer -->|"Batch Vector Embeddings (32)"| LLM
+    Indexer -->|"Upsert Chunks + Metadata"| PG
+    ChatUI <-->|"POST /messages (SSE Stream)"| Streamer
+    Streamer --> Retriever
+    Retriever <-->|"Cosine Similarity Search (repoId)"| PG
+    Streamer <-->|"Grounded Prompt + Stream"| LLM
+    Streamer --> Citations
 ```
 
-## How It Works
+---
 
-1. Authenticate with GitHub.
-2. Select a repository from the connected GitHub account.
-3. Start repository indexing.
-4. DevPilot fetches supported source files from GitHub.
-5. Files are split into chunks and stored as vector embeddings.
-6. Create a chat session for the indexed repository.
-7. Ask a question about the codebase.
-8. DevPilot retrieves relevant code context.
-9. The configured AI model generates a grounded response.
-10. The answer is streamed to the frontend with citations when available.
+## 🔄 End-to-End RAG Indexing & Chat Sequence
 
-## Project Structure
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 👨‍💻 Developer
+    participant Next as Next.js 16 Client
+    participant Boot as Spring Boot API
+    participant Worker as @Async IndexingService
+    participant GH as GitHub API
+    participant PG as PostgreSQL (pgvector)
+    participant AI as Spring AI / OpenRouter
+
+    Dev->>Next: Click "Index repo" on Repository Card
+    Next->>Boot: POST /api/repos/{repoId}/index
+    Boot->>Worker: Dispatch indexAsync(repoId, userId)
+    Boot-->>Next: 202 Accepted (indexStatus = INDEXING)
+    loop Every 2s Status Polling
+        Next->>Boot: GET /api/repos/{repoId}/status
+        Worker->>GH: Fetch Git Tree & Eligible Source Blobs
+        Worker->>Worker: CodeFileFilter + Line-Aware CodeChunker
+        Worker->>PG: VectorStore.add(batch of 32 Documents)
+        Boot-->>Next: { filesProcessed, filesTotal, chunkCount }
+    end
+    Worker->>PG: Mark indexStatus = READY
+
+    Dev->>Next: Ask Question in Repository Chat
+    Next->>Boot: POST /api/chat/sessions/{id}/messages (SSE)
+    Boot->>PG: similaritySearch(repoId, question, topK=8)
+    PG-->>Boot: Top-8 Code Chunks + Line Metadata
+    Boot->>AI: Stream Grounded System + Context Prompt
+    loop Real-Time Token Stream
+        AI-->>Boot: Token Delta
+        Boot-->>Next: SSE event: token
+    end
+    Boot-->>Next: SSE event: assistant_message (with Citations) + done
+```
+
+---
+
+## 🛠️ Tech Stack Breakdown
+
+| Layer | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **Next.js 16.3 (App Router, Turbopack), React 19, TypeScript 5** | SSR/Client hybrid dashboard, Proxy auth guard, SSE stream consumer |
+| **UI & Styling** | **Tailwind CSS v4, Shadcn UI, Lucide Icons, Streamdown + Shiki** | Dark/Light mode workspace, animated streaming Markdown & code blocks |
+| **State & Data Fetching** | **TanStack React Query v5** | Optimistic updates, automatic 2-second live indexing progress polling |
+| **Backend Framework** | **Java 21 LTS, Spring Boot 4.1.0** | REST controllers, `@Async` task execution, `SseEmitter` streaming |
+| **AI & RAG Engine** | **Spring AI 2.0, OpenAI / OpenRouter API** | `ChatClient` streaming, `VectorStore` embeddings, prompt engineering |
+| **Database & Vector Store** | **PostgreSQL 16 + `pgvector` (`HNSW` Cosine Index)** | Relational entities (`users`, `repositories`, `chat_sessions`) + `vector_store` |
+| **Security** | **Spring Security 6, GitHub OAuth2 Client, `TextEncryptor`** | OAuth2 login flow, session management, encrypted GitHub tokens |
+
+---
+
+## 📂 Project Directory Structure
 
 ```text
 devPilot/
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── devPilot/backend/
-│   │   │   │       ├── config/
-│   │   │   │       ├── controllers/
-│   │   │   │       ├── dto/
-│   │   │   │       ├── entity/
-│   │   │   │       ├── repository/
-│   │   │   │       ├── security/
-│   │   │   │       └── services/
-│   │   │   └── resources/
-│   │   └── test/
-│   ├── pom.xml
-│   ├── mvnw
-│   └── mvnw.cmd
+├── backend/                                 # Spring Boot 4.1 + Spring AI 2.0 Backend
+│   ├── src/main/java/devPilot/backend/
+│   │   ├── config/                          # AppConfig (@Async), CorsConfig, CryptoConfig, SecurityConfig
+│   │   ├── controllers/                     # AuthController, RepoController, ChatController
+│   │   ├── dto/                             # Immutable Java Records for API Requests/Responses
+│   │   ├── entity/                          # JPA Entities (User, Repository, ChatSession, ChatMessage)
+│   │   ├── repository/                      # Spring Data JPA Repositories
+│   │   ├── security/                        # GitHubOAuth2UserService, AppUserPrincipal, @CurrentUser
+│   │   └── services/
+│   │       ├── ai/                          # CodeContextRetriever, ChatPromptBuilder, ChatStreamHandler, CitationMapper
+│   │       ├── github/                      # GithubApiClient, GithubRateLimiter
+│   │       └── indexing/                    # IndexingService, CodeChunker, CodeFileFilter
+│   ├── src/main/resources/
+│   │   └── application.properties           # Environment-driven Spring Boot & PGVector config
+│   ├── Dockerfile                           # Multi-stage Eclipse Temurin 21 Alpine container build
+│   └── pom.xml
 │
-├── client/
-│   ├── app/                  # Next.js routes and pages
-│   ├── components/           # UI and feature components
-│   ├── hooks/                # React hooks
-│   ├── lib/                  # API client and shared utilities
-│   ├── public/               # Static assets
-│   └── package.json
+├── client/                                  # Next.js 16 + React 19 Frontend
+│   ├── app/
+│   │   ├── api/ai-chat/route.ts             # Serverless OpenRouter AI streaming route
+│   │   ├── auth/callback/page.tsx           # OAuth2 callback & session hydration
+│   │   ├── chat/[repoId]/page.tsx           # Repository RAG Chat interface
+│   │   ├── dashboard/                       # Repositories, Overview, and Settings routes
+│   │   ├── login/page.tsx                   # GitHub OAuth sign-in page
+│   │   └── page.tsx                         # Hero landing page
+│   ├── components/
+│   │   ├── chat/                            # ChatView, ChatMessages, ChatComposer, CitationChips, ChatMarkdown
+│   │   ├── dashboard/                       # RepoDashboard, RepoCard, OverviewDashboard, SettingsDashboard
+│   │   └── layout/                          # AppShell collapsible sidebar & header
+│   ├── hooks/                               # use-auth.ts, use-repos.ts, use-chat.ts
+│   ├── lib/                                 # api.ts, stream-chat.ts, demo-engine.ts
+│   ├── proxy.ts                             # Next.js 16 route protection middleware
+│   └── vercel.json                          # Vercel deployment configuration
 │
-├── docker/
-│   └── postgres/             # PostgreSQL initialization scripts
-│
-├── docker-compose.yml
-└── README.md
+├── docker/postgres/init-extensions.sql      # Initializes vector & uuid-ossp extensions
+├── docker-compose.yml                       # PostgreSQL 16 + pgvector container (port 5433)
+├── Start-DevPilot.bat                       # 1-Click Windows launcher for Frontend (port 3000)
+├── Start-Backend.bat                        # 1-Click Windows launcher for Backend (port 8080)
+└── .env.example                             # Environment variable template
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 🔌 REST & SSE API Reference
 
-Install the following before running DevPilot locally:
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/oauth2/authorization/github` | Initiates GitHub OAuth 2.0 login flow |
+| `GET` | `/api/auth/me` | Returns authenticated user profile (`UserResponse`) |
+| `POST` | `/api/auth/logout` | Invalidates HTTP session and clears cookies |
+| `GET` | `/api/repos?refresh={true\|false}` | Lists repositories (optionally syncing latest repos from GitHub API) |
+| `GET` | `/api/repos/{repoId}` | Fetches details and index metrics for a single repository |
+| `POST` | `/api/repos/{repoId}/index` | Starts asynchronous background indexing (`202 Accepted`) |
+| `GET` | `/api/repos/{repoId}/status` | Polls live indexing progress (`filesProcessed`, `filesTotal`, `chunkCount`) |
+| `POST` | `/api/chat/sessions` | Creates a new chat session for an indexed (`READY`) repository |
+| `GET` | `/api/chat/sessions?repositoryId={id}` | Lists all chat sessions for a repository |
+| `GET` | `/api/chat/sessions/{sessionId}` | Retrieves full message & citation history for a session |
+| `POST` | `/api/chat/sessions/{sessionId}/messages` | **SSE Stream** (`user_message` → `token`* → `assistant_message` → `done`) |
 
-- Java Development Kit 21
-- Node.js and npm
-- Docker Desktop with Docker Compose
-- A GitHub OAuth application
-- An API key for the configured OpenAI-compatible AI provider
+---
 
-### 1. Clone the repository
+## 🚀 Quick Start (Local Development)
 
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/Aestheticsuraj234/devPilot.git
+git clone https://github.com/Shivampal157/devPilot.git
 cd devPilot
 ```
 
-### 2. Start PostgreSQL and pgvector
-
-From the repository root:
-
+### 2. Start PostgreSQL + `pgvector` via Docker
 ```bash
 docker compose up -d postgres
 ```
 
-The local database is exposed on port `5433`.
-
-Default development connection details:
-
-```text
-Host: localhost
-Port: 5433
-Database: devpilot
-Username: postgres
-Password: postgres
-```
-
-The Docker Compose configuration uses the `pgvector/pgvector:pg16` image and initializes the required PostgreSQL extensions.
-
-> The included database credentials are for local development only. Use secure credentials in shared or production environments.
-
-### 3. Configure the backend
-
-Configure the backend using your Spring Boot configuration file or environment-specific configuration.
-
-The following application properties are required by the project:
-
-```properties
-# Frontend and CORS
-app.frontend-url=http://localhost:3000
-app.cors.allowed-origins=http://localhost:3000
-
-# Encryption used for stored GitHub access tokens
-app.token-encryptor-password=replace-with-a-secure-local-secret
-app.token-encryptor-salt=replace-with-a-secure-salt
-
-# GitHub API behavior
-app.github.api-delay-ms=50
-
-# Repository indexing
-app.indexing.chunk-size=800
-app.indexing.max-file-bytes=102400
-```
-
-Configure the database connection:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5433/devpilot
-spring.datasource.username=postgres
-spring.datasource.password=postgres
-```
-
-Configure GitHub OAuth and Spring AI according to your environment. Do not commit real credentials or secrets.
-
-A local GitHub OAuth application should use the following callback URL:
-
-```text
-http://localhost:8080/login/oauth2/code/github
-```
-#### AI provider
-
-DevPilot uses Spring AI's OpenAI-compatible chat model integration.
-
-For OpenAI:
-
-```properties
-spring.ai.openai.api-key=your-openai-api-key
-spring.ai.openai.chat.options.model=your-chat-model
-```
-
-### 4. Start the backend
-
-On macOS or Linux:
-
-```bash
-cd backend
-./mvnw spring-boot:run
-```
-
-On Windows PowerShell:
-
-```powershell
-cd backend
-.\mvnw.cmd spring-boot:run
-```
-
-The backend runs at:
-
-```text
-http://localhost:8080
-```
-
-### 5. Configure and start the frontend
-
-Open a separate terminal:
-
-```bash
-cd client
-npm install
-```
-
-Create `client/.env.local`:
-
+### 3. Configure Environment Variables
+Copy `.env.example` to `.env` and fill in your GitHub OAuth & OpenRouter/OpenAI credentials:
 ```env
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+POSTGRES_DB=devpilot
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-client-secret
+
+SPRING_AI_OPENAI_BASE_URL=https://openrouter.ai/api
+SPRING_AI_OPENAI_API_KEY=your-openrouter-or-openai-key
 ```
 
-Start the development server:
+### 4. Run Backend & Frontend
+- **Windows 1-Click Launch:**
+  - Double-click **`Start-Backend.bat`** (`http://localhost:8080`)
+  - Double-click **`Start-DevPilot.bat`** (`http://localhost:3000`)
+- **Manual CLI Launch:**
+  ```bash
+  # Terminal 1 — Spring Boot Backend
+  cd backend
+  ./mvnw spring-boot:run
 
-```bash
-npm run dev
-```
+  # Terminal 2 — Next.js Frontend
+  cd client
+  npm install
+  npm run dev
+  ```
 
-Open the application at:
+---
 
-```text
-http://localhost:3000
-```
+<div align="center">
 
-## Usage
+**Built with ❤️ by [Shivam Pal](https://github.com/Shivampal157)**  
+🔗 [**Live App (`dev-pilot-theta.vercel.app`)**](https://dev-pilot-theta.vercel.app) · [**GitHub (`@Shivampal157`)**](https://github.com/Shivampal157)
 
-1. Open DevPilot in your browser.
-2. Select **Continue with GitHub**.
-3. Authorize the GitHub OAuth application.
-4. Choose a repository.
-5. Start indexing.
-6. Wait until the repository status is `READY`.
-7. Create a chat session.
-8. Ask questions about the codebase.
-9. Review the generated answer and available source citations.
-
-A repository must be successfully indexed before it can be used for chat.
-
-## API Overview
-
-The frontend communicates with the backend through REST endpoints and Server-Sent Events.
-
-| API area | Purpose |
-| --- | --- |
-| `/api/auth` | Authentication, current-user information, and logout |
-| `/api/repos` | Repository listing, details, indexing, and status |
-| `/api/chat/sessions` | Chat session creation and history |
-| Chat streaming endpoint | Streams assistant messages and citations over SSE |
-
-Protected `/api` endpoints require an authenticated session.
-
-## Useful Commands
-
-### Frontend
-
-Run these commands from the `client` directory:
-
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Next.js development server |
-| `npm run build` | Create a production frontend build |
-| `npm run start` | Start the production frontend server |
-| `npm run lint` | Run ESLint |
-
-### Backend
-
-Run these commands from the `backend` directory:
-
-| Command | Description |
-| --- | --- |
-| `./mvnw spring-boot:run` | Start the Spring Boot application |
-| `./mvnw test` | Run backend tests |
-| `./mvnw clean package` | Clean and package the backend |
-
-On Windows, use `mvnw.cmd` instead of `./mvnw`.
-
-### Infrastructure
-
-Run these commands from the repository root:
-
-| Command | Description |
-| --- | --- |
-| `docker compose up -d postgres` | Start PostgreSQL with pgvector |
-| `docker compose down` | Stop local services |
-| `docker compose logs -f postgres` | Follow PostgreSQL logs |
-
-## Testing
-
-Run backend tests:
-
-```bash
-cd backend
-./mvnw test
-```
-
-On Windows:
-
-```powershell
-cd backend
-.\mvnw.cmd test
-```
-
-Run frontend linting:
-
-```bash
-cd client
-npm run lint
-```
-
-Create a production frontend build:
-
-```bash
-cd client
-npm run build
-```
-
-## Production Considerations
-
-Before deploying DevPilot to a shared or production environment:
-
-- Replace the default PostgreSQL credentials.
-- Use a secure secrets manager for OAuth credentials and API keys.
-- Generate strong token-encryption passwords and salts.
-- Restrict `app.cors.allowed-origins` to trusted frontend domains.
-- Use HTTPS for frontend, backend, OAuth, and SSE traffic.
-- Do not expose PostgreSQL publicly unless required.
-- Review GitHub OAuth permissions carefully.
-- Monitor GitHub API rate limits.
-- Configure database backups and persistent storage.
-- Use production-specific Spring Boot and Next.js configuration.
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository.
-2. Create a feature branch:
-
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-
-3. Make your changes.
-4. Run the relevant tests, build commands, and linters.
-5. Commit your changes with a clear message.
-6. Push your branch.
-7. Open a pull request describing the change.
-
-Please avoid committing credentials, generated files, local environment files, or production configuration.
-
-## Security
-
-If you discover a security vulnerability, please avoid opening a public issue with sensitive details. Contact the repository maintainer privately with the relevant information and reproduction steps.
-
-## License
-
-No license file is currently included in this repository. Until a license is added, the project should not be assumed to be available for redistribution, modification, or commercial use.
-
-## Acknowledgements
-
-DevPilot is built with:
-
-- [Next.js](https://nextjs.org/)
-- [React](https://react.dev/)
-- [Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring AI](https://spring.io/projects/spring-ai)
-- [PostgreSQL](https://www.postgresql.org/)
-- [pgvector](https://github.com/pgvector/pgvector)
-- [Docker](https://www.docker.com/)
-- [GitHub OAuth](https://docs.github.com/en/apps/oauth-apps)
+</div>
